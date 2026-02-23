@@ -208,8 +208,6 @@ services:
       POSTGRES_USER: ${POSTGRES_USER:-inveniordm}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-inveniordm}
       POSTGRES_DB: ${POSTGRES_DB:-inveniordm}
-    ports:
-      - "127.0.0.1:5432:5432"
     healthcheck:
       test: [ "CMD-SHELL", "pg_isready -U inveniordm" ]
       interval: 5s
@@ -234,9 +232,6 @@ services:
         soft: 65536
         hard: 65536
     mem_limit: 2g
-    ports:
-      - "127.0.0.1:9200:9200"
-      - "127.0.0.1:9600:9600"
     healthcheck:
       test: [ "CMD-SHELL", "curl -f http://localhost:9200/_cluster/health || exit 1" ]
       interval: 10s
