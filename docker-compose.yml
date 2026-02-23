@@ -64,16 +64,6 @@ x-common-env:
   INVENIO_ADMIN_PASSWORD: ${INVENIO_ADMIN_PASSWORD:-changeme}
 
 services:
-  proxy:
-    image: caddy:2.10
-    restart: "unless-stopped"
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
   web:
     image: ghcr.io/front-matter/invenio-rdm-starter:latest
     platform: linux/amd64
@@ -241,5 +231,3 @@ volumes:
   app_data:
   uploaded_data:
   archived_data:
-  caddy_data:
-  caddy_config:
